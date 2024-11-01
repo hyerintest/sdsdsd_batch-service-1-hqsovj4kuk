@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="subscribe">
+    <insert id="insert" parameterType="com.tlc.test.model.Account">
+        INSERT INTO sample(id, content, post)
+        VALUES (#{id}, #{content}, #{post}) ON DUPLICATE KEY
+        UPDATE content = #{content}, post = #{post}
+    </insert>
+
+    <select id="selectAll" resultType="com.tlc.test.model.Account">
+        SELECT *
+        FROM sample;
+    </select>
+
+    <delete id="delete" parameterType="string">
+        DELETE
+        FROM sample
+        WHERE id = #{id}
+    </delete>
+</mapper>
